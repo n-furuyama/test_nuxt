@@ -1,3 +1,6 @@
+const config = require('./.contentful.json') // Contentful追記
+
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -49,4 +52,13 @@ export default {
 
   // 古山追記
   srcDir: 'src/', // 作業フォルダ
+
+  // Contentful追記
+  env: {
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
+    CTF_PERSON_ID: config.CTF_PERSON_ID,
+    CTF_BLOG_POST_TYPE_ID: config.CTF_BLOG_POST_TYPE_ID,
+    CTF_NEWS_POST_TYPE_ID: config.CTF_NEWS_POST_TYPE_ID,
+  }
 }
