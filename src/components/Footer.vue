@@ -2,11 +2,10 @@
   <footer id="Footer">
     <nav class="nav">
       <ul>
-        <li><NuxtLink to="/">TOP</NuxtLink></li>
         <li><NuxtLink to="/about/">ABOUT</NuxtLink></li>
-        <li><NuxtLink to="/timeline/">TIMELINE</NuxtLink></li>
-        <li><NuxtLink to="/timeline/article">TIMELINE ARTICLE</NuxtLink></li>
-        <li><NuxtLink to="/topics/">TOPICS</NuxtLink></li>
+        <li><NuxtLink to="/news/">NEWS</NuxtLink></li>
+        <li><NuxtLink to="/blog/">BLOG</NuxtLink></li>
+        <li><NuxtLink to="/contact/">CONTACT</NuxtLink></li>
       </ul>
     </nav>
   </footer>

@@ -37,5 +37,15 @@ a {
     margin-bottom: 10px;
     font-weight: bold;
   }
+  .c-btn01 {
+    margin-top: 10px;
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
+  <div class="page-about">
     <div>
-      <Header />
-      <Logo />
-      <h1 class="title">About</h1>
+      <h1>About</h1>
+
+      <p>楽しい会社ですよ</p>
     </div>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <div class="page-news-slug">
     <article>
       <h1>{{ post.title }}</h1>
-      {{ post.date }}
+      <p class="date">{{ post.date }}</p>
       <div class="kv">
         <img :src="post.kv.fields.file.url" alt="" />
       </div>
@@ -15,31 +15,54 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+.kv {
+  margin-top: 20px;
+  img {
+    max-width: 900px;
+  }
+}
+.text {
+  margin-top: 20px;
+}
+</style>
+
 <script>
 import { createClient } from '../../plugins/contentful'
 const client = createClient()
 
 export default {
-  asyncData({ env }) {
-    console.log('-----------')
-    console.log(env)
+  asyncData({ env, params }) {
+    const select = [
+      'fields.date', // 日付
+      'fields.title', // ページタイトル
+      'fields.slug', // スラッグ
+      'fields.text', // 本文
+      'fields.kv', // KV
+    ]
+
     return Promise.all([
       client.getEntries({
         content_type: env.CTF_NEWS_POST_TYPE_ID,
-        'fields.slug': '200528',
+        select: select.join(','),
+        'fields.slug': params.slug,
         limit: 1,
       }),
     ])
-      .then(([posts]) => {
-        console.log(env)
+      .then((posts) => {
+        console.log('-------------')
+        console.log(posts[0])
+        if (posts.length === 0) {
+          // return error({ statusCode: 404 })
+          // this.$nuxt.error({
+          //   statusCode: 404,
+          // })
+        }
         return {
-          post: posts.items[0].fields,
+          post: posts[0].items[0].fields,
         }
       })
       .catch(console.error)
   },
-  computed: {},
-
-  mounted() {},
 }
 </script>

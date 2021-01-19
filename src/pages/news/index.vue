@@ -1,10 +1,12 @@
 <template>
-  <div class="page-news">
+  <div>
     <h1>NEWS</h1>
 
     <ul>
       <li v-for="post in news" :key="post.sys.id">
-        <NuxtLink :to="post.fields.slug">
+        <NuxtLink
+          :to="{ name: 'news-slug', params: { slug: post.fields.slug } }"
+        >
           <span class="date">{{ post.fields.date }}</span>
           <span class="title">{{ post.fields.title }}</span>
         </NuxtLink>
@@ -13,24 +15,22 @@
   </div>
 </template>
 
-<style lang="scss">
-.page-news {
-  ul {
-    border-top: 1px solid #ccc;
-    li {
-      border-bottom: 1px solid #ccc;
-      a {
-        display: block;
-        padding: 15px;
-        text-decoration: none;
-        &:hover {
-          background: #f9f9f9;
-        }
+<style lang="scss" scoped>
+ul {
+  border-top: 1px solid #ccc;
+  li {
+    border-bottom: 1px solid #ccc;
+    a {
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+      &:hover {
+        background: #f9f9f9;
       }
-      .date {
-        display: inline-block;
-        width: 100px;
-      }
+    }
+    .date {
+      display: inline-block;
+      width: 100px;
     }
   }
 }
